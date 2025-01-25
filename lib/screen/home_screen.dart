@@ -1,4 +1,4 @@
-import 'package:campus_dabba/widgets/custom_app_bar.dart';
+// import 'package:campus_dabba/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,10 +6,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: AppBar(),
-      body: Center(
-        child: Text("what are you"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Campus Dabba"),
+        leading: Icon(Icons.person),
+        elevation: 0.5,
+        actions: [
+          Icon(Icons.search),
+          SizedBox(
+            width: 10,
+          ),
+          Icon(Icons.menu),
+        ],
+      ),
+      body: Column(
+        children: [],
       ),
     );
   }

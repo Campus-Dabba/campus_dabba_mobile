@@ -1,5 +1,4 @@
 import 'package:campus_dabba/screen/home_screen.dart';
-import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SearchScreen(),
+      home: const HomeScreen(),
     );
   }
 }
