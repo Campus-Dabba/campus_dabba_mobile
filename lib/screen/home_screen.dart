@@ -13,14 +13,19 @@ class HomeScreen extends StatelessWidget {
         elevation: 0.5,
         actions: [
           Icon(Icons.search),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Icon(Icons.menu),
+          SizedBox(width: 10),
         ],
       ),
       body: Column(
-        children: [],
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 15),
+            child: Text("Explore"),
+          ),
+          Divider(),
+        ],
       ),
     );
   }
