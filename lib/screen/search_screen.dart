@@ -53,9 +53,6 @@ class BackgroundWaveClipper extends CustomClipper<Path> {
   bool shouldReclip(BackgroundWaveClipper oldClipper) => oldClipper != this;
 }
 
-
-
-
 class SearchBar extends StatelessWidget {
   final pink = const Color(0xFFFACCCC);
   final grey = const Color(0xFFF2F2F7);
@@ -87,16 +84,10 @@ class SearchBar extends StatelessWidget {
   }
 
   OutlineInputBorder _border(Color color) => OutlineInputBorder(
-    borderSide: BorderSide(width: 0.5, color: color),
-    borderRadius: BorderRadius.circular(12),
-  );
+        borderSide: BorderSide(width: 0.5, color: color),
+        borderRadius: BorderRadius.circular(12),
+      );
 }
-
-
-
-
-
-
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -117,7 +108,7 @@ class SearchScreen extends StatelessWidget {
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(16),
                 child: const Text(
-                  'Cruelty-free brand',
+                  'A really tasty indian cuisin',
                   style: TextStyle(fontSize: 20),
                 ));
           }, childCount: 20))
@@ -127,10 +118,6 @@ class SearchScreen extends StatelessWidget {
   }
 }
 
-
-
-
-
 class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   const SliverSearchAppBar();
 
@@ -138,7 +125,7 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     var adjustedShrinkOffset =
-    shrinkOffset > minExtent ? minExtent : shrinkOffset;
+        shrinkOffset > minExtent ? minExtent : shrinkOffset;
     double offset = (minExtent - adjustedShrinkOffset) * 0.5;
     double topPadding = MediaQuery.of(context).padding.top + 16;
 
