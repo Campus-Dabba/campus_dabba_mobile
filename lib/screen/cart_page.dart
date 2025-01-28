@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
+  const CartScreen({super.key});
+
   @override
-  _CartScreenState createState() => _CartScreenState();
+  State<CartScreen> createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
@@ -14,7 +16,8 @@ class _CartScreenState extends State<CartScreen> {
   ];
 
   double get totalPrice {
-    return cartItems.fold(0, (total, item) => total + (item.price * item.quantity));
+    return cartItems.fold(
+        0, (total, item) => total + (item.price * item.quantity));
   }
 
   @override
@@ -59,21 +62,23 @@ class _CartScreenState extends State<CartScreen> {
                   children: [
                     Text(
                       'Total:',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       '\$${totalPrice.toStringAsFixed(2)}',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
-                  child: Text('Proceed to Checkout'),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
+                    foregroundColor: Colors.orange,
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                    textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     // TODO: Implement checkout functionality
@@ -81,6 +86,7 @@ class _CartScreenState extends State<CartScreen> {
                       SnackBar(content: Text('Proceeding to checkout...')),
                     );
                   },
+                  child: Text('Proceed to Checkout'),
                 ),
               ],
             ),
@@ -105,11 +111,11 @@ class CartItemWidget extends StatelessWidget {
   final VoidCallback onDecrease;
 
   const CartItemWidget({
-    Key? key,
+    super.key,
     required this.item,
     required this.onIncrease,
     required this.onDecrease,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

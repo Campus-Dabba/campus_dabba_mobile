@@ -1,3 +1,5 @@
+import 'package:campus_dabba/screen/cart_page.dart';
+import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,7 +14,10 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              // TODO: Implement cart functionality
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartScreen()),
+              );
             },
           ),
         ],
@@ -23,20 +28,44 @@ class HomeScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Lets eat!',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+              child: GestureDetector(
+                child: Hero(
+                  tag: "search-bar",
+                  // child: TextField(
+                  //   decoration: InputDecoration(
+                  //     hintText: 'Lets eat!',
+                  //     prefixIcon: Icon(Icons.search),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.circular(20),
+                  //     ),
+                  //   ),
+                  // ),
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.search, color: Colors.grey),
+                        SizedBox(width: 8),
+                        Text('Search for restaurants or foods',
+                            style: TextStyle(color: Colors.grey)),
+                      ],
+                    ),
                   ),
+                ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                'Categories',
+                'States',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -46,10 +75,10 @@ class HomeScreen extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  CategoryButton(title: 'Pizza', icon: Icons.local_pizza),
-                  CategoryButton(title: 'Burger', icon: Icons.fastfood),
-                  CategoryButton(title: 'Sushi', icon: Icons.rice_bowl),
-                  CategoryButton(title: 'Dessert', icon: Icons.cake),
+                  CategoryButton(title: 'Panjabi', icon: Icons.local_pizza),
+                  CategoryButton(title: 'Gujrati', icon: Icons.fastfood),
+                  CategoryButton(title: 'Bengoli', icon: Icons.rice_bowl),
+                  CategoryButton(title: 'Maharastran', icon: Icons.cake),
                 ],
               ),
             ),
@@ -61,20 +90,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             RestaurantCard(
-              name: 'Pizza Palace',
-              image: 'https://example.com/pizza.jpg',
+              name: 'Panjabi',
+              image: 'assets/fafda jalebi.png',
               rating: 4.5,
               deliveryTime: '30-40 min',
             ),
             RestaurantCard(
               name: 'Burger Bonanza',
-              image: 'https://example.com/burger.jpg',
+              image: 'assets/fafda jalebi.png',
               rating: 4.2,
               deliveryTime: '20-30 min',
             ),
             RestaurantCard(
               name: 'Sushi Supreme',
-              image: 'https://example.com/sushi.jpg',
+              image: 'assets/fafda jalebi.png',
               rating: 4.8,
               deliveryTime: '40-50 min',
             ),
@@ -134,11 +163,14 @@ class RestaurantCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            image,
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
+          // Image.network(
+          //   image,
+          //   height: 200,
+          //   width: double.infinity,
+          //   fit: BoxFit.cover,
+          // ),
+          Image(
+            image: AssetImage(image),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
