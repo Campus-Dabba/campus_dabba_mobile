@@ -71,7 +71,7 @@ class SearchBar extends StatelessWidget {
           focusedBorder: _border(pink),
           border: _border(grey),
           enabledBorder: _border(grey),
-          hintText: 'Start brand search',
+          hintText: 'Lets Eat!',
           contentPadding: const EdgeInsets.symmetric(vertical: 20),
           prefixIcon: const Icon(
             Icons.search,
