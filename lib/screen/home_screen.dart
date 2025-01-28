@@ -9,16 +9,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Campus Dabba"),
-        leading: Icon(Icons.person),
+        // leading: Icon(Icons.person),
         elevation: 0.5,
         actions: [
           Icon(Icons.search),
+          SizedBox(width: 10),
+          Icon(Icons.shopping_cart_outlined),
           SizedBox(width: 10),
           Icon(Icons.menu),
           SizedBox(width: 10),
         ],
       ),
       body: Column(
+        // mainAxisAlignment: MainAxisAlignment,
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 15),
