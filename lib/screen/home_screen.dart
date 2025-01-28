@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -8,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food Delivery'),
+        title: Text("Campus Dabba"),
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -26,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Search for restaurants or foods',
+                  hintText: 'Lets eat!',
                   prefixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -90,8 +89,7 @@ class CategoryButton extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  const CategoryButton({Key? key, required this.title, required this.icon})
-      : super(key: key);
+  const CategoryButton({super.key, required this.title, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +120,12 @@ class RestaurantCard extends StatelessWidget {
   final String deliveryTime;
 
   const RestaurantCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.image,
     required this.rating,
     required this.deliveryTime,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
