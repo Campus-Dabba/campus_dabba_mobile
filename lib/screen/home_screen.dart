@@ -1,5 +1,6 @@
 import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
+import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:campus_dabba/widgets/restaurant_card.dart';
@@ -82,13 +83,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             FoodCard(
-              cookName: "Anita",
-              cookImageUrl: "assets/cooks/cook_01.png",
-              foodImageUrl: "assets/bharli vangi.png",
-              foodName: "Bharli Vangi",
-              price: "190",
-              rating: 4.8,
-              estimatedTime: "20-25 min",
+              dish: Dish(
+                cookName: "Anita",
+                cookImage: "assets/cooks/cook_01.png",
+                foodImage: "assets/bharli vangi.png",
+                foodName: "Bharli Vangi",
+                price: "190",
+                rating: 4.8,
+                estimatedTime: "20-25 min",
+              ),
             ),
             RestaurantCard(
               name: 'Panjabi',

@@ -6,6 +6,7 @@ class Dish {
   final String price;
   final double rating;
   final String estimatedTime;
+  int quantity;
 
   Dish({
     required this.foodName,
@@ -15,6 +16,7 @@ class Dish {
     required this.price,
     required this.rating,
     required this.estimatedTime,
+    this.quantity = 0,
   });
 
   // // Method to display dish details

@@ -1,24 +1,13 @@
+import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/widgets/quantity_controll_widget.dart';
 import 'package:flutter/material.dart';
 
 class FoodCard extends StatelessWidget {
-  final String cookName;
-  final String cookImageUrl;
-  final String foodImageUrl;
-  final String foodName;
-  final String price;
-  final double rating;
-  final String estimatedTime;
+  final Dish dish;
 
   const FoodCard({
     super.key,
-    required this.cookName,
-    required this.cookImageUrl,
-    required this.foodImageUrl,
-    required this.foodName,
-    required this.price,
-    required this.rating,
-    required this.estimatedTime,
+    required this.dish,
   });
 
   @override
@@ -35,12 +24,12 @@ class FoodCard extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage(cookImageUrl),
+                  backgroundImage: AssetImage(dish.cookImage),
                   radius: 20,
                 ),
                 SizedBox(width: 8),
                 Text(
-                  cookName,
+                  dish.cookName,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -50,7 +39,7 @@ class FoodCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
             child: Image(
-              image: AssetImage(foodImageUrl),
+              image: AssetImage(dish.foodImage),
               height: 380,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -60,7 +49,7 @@ class FoodCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8, top: 8),
             child: Text(
-              foodName,
+              dish.foodName,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
@@ -74,14 +63,14 @@ class FoodCard extends StatelessWidget {
                   children: [
                     // Icon(Icons.access_time, color: Colors.grey),
                     // SizedBox(width: 4),
-                    Text(estimatedTime),
+                    Text(dish.estimatedTime),
                   ],
                 ),
                 Row(
                   children: [
                     Icon(Icons.star, color: Colors.amber),
                     SizedBox(width: 4),
-                    Text(rating.toStringAsFixed(1)),
+                    Text(dish.rating.toStringAsFixed(1)),
                     SizedBox(width: 10),
                   ],
                 ),
@@ -102,7 +91,7 @@ class FoodCard extends StatelessWidget {
                       size: 19,
                     ),
                     Text(
-                      price,
+                      dish.price,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -111,7 +100,10 @@ class FoodCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: QuantityControlWidget(
-                    onQuantityChanged: (p0) {},
+                    initialQuantity: dish.quantity,
+                    onQuantityChanged: (quantity) {
+                      dish.quantity = quantity;
+                    },
                   ),
                 )
               ],
