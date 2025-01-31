@@ -1,13 +1,14 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:campus_dabba/auth_screen.dart';
+// import 'package:campus_dabba/auth_screen.dart';
+import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppAssets {
-  static String kOnboardingFirst = 'assets/foochi/onboarding-first.png';
-  static String kOnboardingSecond = 'assets/foochi/onboarding-second.png';
-  static String kOnboardingThird = 'assets/foochi/onboarding-third.png';
+  static String kOnboardingFirst = 'assets/dabba/onboarding-first.png';
+  static String kOnboardingSecond = 'assets/dabba/onboarding-second.png';
+  static String kOnboardingThird = 'assets/dabba/onboarding-third.png';
 }
 
 class AppColors {
@@ -16,14 +17,14 @@ class AppColors {
   static const Color kBackground = Color(0xFFFFF5E0);
 }
 
-class FoochiOnboardingView extends StatefulWidget {
-  const FoochiOnboardingView({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<FoochiOnboardingView> createState() => _FoochiOnboardingViewState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _FoochiOnboardingViewState extends State<FoochiOnboardingView> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController pageController = PageController();
   int currentIndex = 0;
 
@@ -66,7 +67,7 @@ class _FoochiOnboardingViewState extends State<FoochiOnboardingView> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AuthScreen(),
+                      builder: (context) => DabbaSignUpScreen(),
                     ),
                   );
                 } else {
@@ -197,20 +198,18 @@ List<Onboarding> onboardingList = [
   Onboarding(
       title1: 'Diverse ',
       title2: 'and fresh food',
-      description:
-          'With an extensive menu prepared by mothers, fresh quality food.',
+      description: 'Made with mothers love',
       image: AppAssets.kOnboardingFirst),
   Onboarding(
-      title1: 'Easy to ',
-      title2: 'change dish ingredients',
-      description:
-          'You are a foodie, you can add or subtract ingredients in the dish.',
+      title1: 'The love of ',
+      title2: 'home made food',
+      description: "Living away from home? You can still eat home made food!",
       image: AppAssets.kOnboardingSecond),
   Onboarding(
       title1: 'Delivery ',
       title2: 'Is given on time',
       description:
-          'With an extensive menu prepared at home, fresh quality food.',
+          'With an extensive menu prepared by talented chefs, fresh quality food.',
       image: AppAssets.kOnboardingThird)
 ];
 

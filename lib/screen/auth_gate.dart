@@ -1,4 +1,3 @@
-import 'package:campus_dabba/auth_screen.dart';
 import 'package:campus_dabba/screen/home_screen.dart';
 import 'package:campus_dabba/screen/intro_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +19,7 @@ class AuthGate extends StatelessWidget {
           // user is logged out
           else {
             // return AuthScreen();
-            return FoochiOnboardingView();
+            return OnboardingScreen();
           }
         },
       ),
