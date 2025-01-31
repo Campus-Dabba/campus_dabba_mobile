@@ -1,18 +1,20 @@
 class Dish {
-  String name;
-  String description;
-  double price;
-  bool isVegetarian;
-  int id;
-  String image;
+  final String foodName;
+  final String cookName;
+  final String foodImage;
+  final String cookImage;
+  final String price;
+  final double rating;
+  final String estimatedTime;
 
   Dish({
-    required this.name,
-    required this.description,
+    required this.foodName,
+    required this.cookName,
+    required this.foodImage,
+    required this.cookImage,
     required this.price,
-    required this.isVegetarian,
-    required this.id,
-    required this.image,
+    required this.rating,
+    required this.estimatedTime,
   });
 
   // // Method to display dish details
