@@ -2,14 +2,19 @@ import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
+import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
-import 'package:campus_dabba/widgets/curved_bottom_nav_bar.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   final _orderBasket = OrderBasket();
+
+  void logoutFunction() {
+    final auth = AuthService();
+    auth.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +35,10 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
+          IconButton(
+            onPressed: logoutFunction,
+            icon: Icon(Icons.logout),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -133,7 +142,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CustomNavBarCurved(),
+      // bottomNavigationBar: CustomNavBarCurved(),
     );
   }
 }

@@ -62,7 +62,7 @@ class PrimaryContainer extends StatelessWidget {
             blurRadius: 4,
             spreadRadius: 0,
             color: Colors.black,
-            inset: true,
+            // inset: true,
           ),
         ],
       ),

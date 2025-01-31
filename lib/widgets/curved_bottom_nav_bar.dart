@@ -42,7 +42,7 @@ class CustomNavBarCurvedState extends State<CustomNavBarCurved> {
 
     const primaryColor = Colors.amber;
     const secondaryColor = Colors.black54;
-    const backgroundColor = Color.fromARGB(255, 220, 220, 220);
+    const backgroundColor = Color.fromARGB(255, 224, 224, 224);
 
     return BottomAppBar(
       color: Colors.transparent,
