@@ -1,3 +1,4 @@
+import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:simple_animations/animation_builder/play_animation_builder.dart';
@@ -41,8 +42,11 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
     if (value.isEmpty) {
       return false;
     } else {
-      final nameRegex = RegExp(r'^[a-zA-Z]+$');
-      return nameRegex.hasMatch(value);
+      return true;
+      // TODO: make a proper validation (currently broken)
+      //
+      // final nameRegex = RegExp(r'^[a-zA-Z]+$');
+      // return nameRegex.hasMatch(value);
     }
   }
 
@@ -50,10 +54,13 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
     if (value.isEmpty) {
       return false;
     } else {
-      final emailRegex = RegExp(
-        r'^[w-]+(.[w-]+)*@([w-]+.)+[a-zA-Z]{2,7}$',
-      );
-      return emailRegex.hasMatch(value);
+      return true;
+      // TODO: make a proper validation (currently broken)
+      //
+      // final emailRegex = RegExp(
+      //   r'^[w-]+(.[w-]+)*@([w-]+.)+[a-zA-Z]{2,7}$',
+      // );
+      // return emailRegex.hasMatch(value);
     }
   }
 
@@ -173,30 +180,32 @@ class DabbaSigninScreen extends StatefulWidget {
 
 class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool isEmailCorrect = false;
   bool isNameCorrect = false;
 
-  bool validateName(String value) {
-    if (value.isEmpty) {
-      return false;
-    } else {
-      final nameRegex = RegExp(r'^[a-zA-Z]+$');
-      return nameRegex.hasMatch(value);
-    }
-  }
-
   bool validateEmail(String value) {
     if (value.isEmpty) {
       return false;
     } else {
-      final emailRegex = RegExp(
-        r'^[w-]+(.[w-]+)*@([w-]+.)+[a-zA-Z]{2,7}$',
-      );
-      return emailRegex.hasMatch(value);
+      return true;
+      // TODO: make a proper validation (currently broken)
+      //
+      // final emailRegex = RegExp(
+      //   r'^[w-]+(.[w-]+)*@([w-]+.)+[a-zA-Z]{2,7}$',
+      // );
+      // return emailRegex.hasMatch(value);
     }
+  }
+
+  void signInFunction() {
+    final auth = AuthService();
+
+    auth.signInWithEmailPassword(
+      _emailController.text,
+      _passwordController.text,
+    );
   }
 
   @override
@@ -219,25 +228,7 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.black)),
-                const SizedBox(height: 24),
-                const SizedBox(height: 30),
-                AuthField(
-                  controller: _usernameController,
-                  hintText: 'Your Username',
-                  isFieldValidated: isNameCorrect,
-                  keyboardType: TextInputType.name,
-                  onChanged: (value) {
-                    isNameCorrect = validateName(value);
-                    setState(() {});
-                  },
-                  validator: (value) {
-                    if (!validateName(value!)) {
-                      return 'Enter a valid name';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 74),
                 AuthField(
                   controller: _emailController,
                   hintText: 'Your Email',
@@ -265,19 +256,26 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                       return 'Please enter your email';
                     } else if (value.length < 6) {
                       return 'Password should be at least 6 characters';
-                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
-                        .hasMatch(value)) {
-                      return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
                     }
+                    // } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
+                    //     .hasMatch(value)) {
+                    //   return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
+                    // }
                     return null;
                   },
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton(
-                    onTap: () async {
-                      if (_formKey.currentState!.validate()) {}
-                    },
-                    text: 'Sign In'),
+                  onTap: () async {
+                    if (_formKey.currentState!.validate()) {
+                      await AuthService().signInWithEmailPassword(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
+                    }
+                  },
+                  text: 'Sign In',
+                ),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -295,81 +293,6 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                 )
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SocialIcons extends StatefulWidget {
-  final VoidCallback onTap;
-  final Widget child;
-  final bool isGoogleIcon;
-  const SocialIcons(
-      {super.key,
-      required this.onTap,
-      required this.child,
-      this.isGoogleIcon = false});
-
-  @override
-  State<SocialIcons> createState() => _SocialIconsState();
-}
-
-class _SocialIconsState extends State<SocialIcons>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  final Duration _animationDuration = const Duration(milliseconds: 300);
-  final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: _animationDuration,
-    )..addListener(() {
-        setState(() {});
-      });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _controller.forward().then((_) {
-          _controller.reverse();
-        });
-        widget.onTap();
-      },
-      child: ScaleTransition(
-        scale: _tween.animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Curves.easeOut,
-            reverseCurve: Curves.easeIn,
-          ),
-        ),
-        child: Card(
-          elevation: 0,
-          color: Colors.transparent,
-          child: Container(
-            height: 50,
-            width: 50,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: widget.isGoogleIcon ? AppColors.kOrange : null,
-              border: widget.isGoogleIcon
-                  ? null
-                  : Border.all(color: AppColors.kLine),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: widget.child,
           ),
         ),
       ),
@@ -544,12 +467,13 @@ class _PrimaryButtonState extends State<PrimaryButton>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        _controller.forward().then((_) {
-          _controller.reverse();
-        });
-        widget.onTap();
-      },
+      // onTap: () {
+      //   _controller.forward().then((_) {
+      //     _controller.reverse();
+      //   });
+      //   widget.onTap();
+      // },
+      onTap: widget.onTap,
       child: ScaleTransition(
         scale: _tween.animate(
           CurvedAnimation(

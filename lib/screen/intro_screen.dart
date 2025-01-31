@@ -19,7 +19,11 @@ class AppColors {
 }
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+  final VoidCallback getStartedCallBack;
+  const OnboardingScreen({
+    super.key,
+    required this.getStartedCallBack,
+  });
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -65,12 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               width: 130,
               onTap: () {
                 if (currentIndex == (onboardingList.length - 1)) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AuthScreen(),
-                    ),
-                  );
+                  widget.getStartedCallBack();
                 } else {
                   pageController.nextPage(
                     duration: const Duration(milliseconds: 500),
