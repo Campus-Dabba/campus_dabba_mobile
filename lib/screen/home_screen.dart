@@ -1,6 +1,7 @@
 import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
+import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:campus_dabba/widgets/restaurant_card.dart';
 import 'package:flutter/material.dart';
 
@@ -76,9 +77,17 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Popular Restaurants',
+                'Discover cooks',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+            ),
+            FoodCard(
+              cookName: "Anita",
+              cookImageUrl: "assets/cooks/cook_01.png",
+              foodImageUrl: "assets/bharli vangi.png",
+              foodName: "Bharli Vangi",
+              rating: 4.8,
+              estimatedTime: "20-25 min",
             ),
             RestaurantCard(
               name: 'Panjabi',
@@ -104,4 +113,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
