@@ -1,7 +1,12 @@
+import 'package:campus_dabba/type/order.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+  final OrderBasket orderBasket;
+  const CartScreen({
+    super.key,
+    required this.orderBasket,
+  });
 
   @override
   State<CartScreen> createState() => _CartScreenState();

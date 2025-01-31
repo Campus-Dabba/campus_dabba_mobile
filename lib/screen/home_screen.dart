@@ -21,7 +21,10 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
+                MaterialPageRoute(
+                    builder: (context) => CartScreen(
+                          orderBasket: _orderBasket,
+                        )),
               );
             },
           ),
@@ -91,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                 cookImage: "assets/cooks/cook_01.png",
                 foodImage: "assets/bharli vangi.png",
                 foodName: "Bharli Vangi",
-                price: "190",
+                price: 190,
                 rating: 4.8,
                 estimatedTime: "20-25 min",
               ),
@@ -104,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                 cookImage: "assets/cooks/cook_02.png",
                 foodImage: "assets/fafda jalebi.png",
                 foodName: "Fafda Jalebi",
-                price: "80",
+                price: 80,
                 rating: 4.2,
                 estimatedTime: "45-50 min",
               ),
@@ -117,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                 cookImage: "assets/cooks/cook_02.png",
                 foodImage: "assets/thepla.png",
                 foodName: "Thepla",
-                price: "119",
+                price: 119,
                 rating: 3.8,
                 estimatedTime: "50-60 min",
               ),

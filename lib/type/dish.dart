@@ -4,7 +4,7 @@ class Dish {
   final String cookName;
   final String foodImage;
   final String cookImage;
-  final String price;
+  final double price;
   final double rating;
   final String estimatedTime;
   int quantity;
