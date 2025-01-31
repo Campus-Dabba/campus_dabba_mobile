@@ -19,7 +19,11 @@ class AppColors {
 }
 
 class DabbaSignUpScreen extends StatefulWidget {
-  const DabbaSignUpScreen({super.key});
+  final VoidCallback loginNowCallback;
+  const DabbaSignUpScreen({
+    super.key,
+    required this.loginNowCallback,
+  });
 
   @override
   State<DabbaSignUpScreen> createState() => _DabbaSignUpScreenState();
@@ -141,7 +145,7 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
                           color: AppColors.kPrimary,
                         )),
                     CustomTextButton(
-                      onPressed: () {},
+                      onPressed: widget.loginNowCallback,
                       text: 'Sign In',
                     )
                   ],
@@ -156,7 +160,12 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
 }
 
 class DabbaSigninScreen extends StatefulWidget {
-  const DabbaSigninScreen({super.key});
+  final VoidCallback registerNowCallback;
+
+  const DabbaSigninScreen({
+    super.key,
+    required this.registerNowCallback,
+  });
 
   @override
   State<DabbaSigninScreen> createState() => _DabbaSigninScreenState();
@@ -205,7 +214,7 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                 const SizedBox(height: 80),
                 Center(child: Image.asset(AppAssets.kAppLogo)),
                 const SizedBox(height: 30),
-                const Text('Sign Up',
+                const Text('Sign In',
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -268,19 +277,19 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {}
                     },
-                    text: 'Sign Up'),
+                    text: 'Sign In'),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Already a member?',
+                    const Text("Don't have an account?",
                         style: TextStyle(
                           fontSize: 14,
                           color: AppColors.kPrimary,
                         )),
                     CustomTextButton(
-                      onPressed: () {},
-                      text: 'Sign In',
+                      onPressed: widget.registerNowCallback,
+                      text: 'Sign Up',
                     )
                   ],
                 )

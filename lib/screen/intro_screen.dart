@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:campus_dabba/screen/auth_screen.dart';
 // import 'package:campus_dabba/auth_screen.dart';
-import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
+// import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -67,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DabbaSignUpScreen(),
+                      builder: (context) => AuthScreen(),
                     ),
                   );
                 } else {

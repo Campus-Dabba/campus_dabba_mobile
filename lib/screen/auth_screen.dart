@@ -1,7 +1,7 @@
-import 'package:campus_dabba/screen/login_screen.dart';
-import 'package:campus_dabba/screen/register_screen.dart';
+import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
+// import 'package:campus_dabba/screen/login_screen.dart';
+// import 'package:campus_dabba/screen/register_screen.dart';
 import 'package:flutter/material.dart';
-
 
 enum _AuthScreenType {
   loginScreen,
@@ -18,7 +18,6 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   _AuthScreenType authScreenType = _AuthScreenType.loginScreen;
 
-
   void loginAndRegisterScreenSwitch() {
     if (authScreenType == _AuthScreenType.loginScreen) {
       authScreenType = _AuthScreenType.registrationScreen;
@@ -31,11 +30,11 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     if (authScreenType == _AuthScreenType.loginScreen) {
-      return LoginScreen(
+      return DabbaSigninScreen(
         registerNowCallback: loginAndRegisterScreenSwitch,
       );
     } else {
-      return RegisterScreen(
+      return DabbaSignUpScreen(
         loginNowCallback: loginAndRegisterScreenSwitch,
       );
     }
