@@ -3,7 +3,6 @@ import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
-import 'package:campus_dabba/widgets/restaurant_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -92,24 +91,6 @@ class HomeScreen extends StatelessWidget {
                 rating: 4.8,
                 estimatedTime: "20-25 min",
               ),
-            ),
-            RestaurantCard(
-              name: 'Panjabi',
-              image: 'assets/fafda jalebi.png',
-              rating: 4.5,
-              deliveryTime: '30-40 min',
-            ),
-            RestaurantCard(
-              name: 'Burger Bonanza',
-              image: 'assets/fafda jalebi.png',
-              rating: 4.2,
-              deliveryTime: '20-30 min',
-            ),
-            RestaurantCard(
-              name: 'Sushi Supreme',
-              image: 'assets/fafda jalebi.png',
-              rating: 4.8,
-              deliveryTime: '40-50 min',
             ),
           ],
         ),
