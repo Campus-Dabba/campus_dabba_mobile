@@ -1,5 +1,5 @@
 import 'package:campus_dabba/screen/auth_screen.dart';
-import 'package:campus_dabba/screen/intro_screen.dart';
+import 'package:campus_dabba/screen/onboarding_screen.dart';
 // import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
 import 'package:flutter/material.dart';
 
