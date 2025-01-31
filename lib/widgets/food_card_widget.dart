@@ -1,14 +1,26 @@
 import 'package:campus_dabba/type/dish.dart';
+import 'package:campus_dabba/type/order.dart';
 import 'package:campus_dabba/widgets/quantity_controll_widget.dart';
 import 'package:flutter/material.dart';
 
 class FoodCard extends StatelessWidget {
   final Dish dish;
+  final OrderBasket orderBasket;
 
   const FoodCard({
     super.key,
     required this.dish,
+    required this.orderBasket,
   });
+
+  void quantityChangeAction(quantity) {
+    orderBasket.addOrder(
+      DishOrder(
+        orderID: dish.dishID,
+        quantity: dish.quantity,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

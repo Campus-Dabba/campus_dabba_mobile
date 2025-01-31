@@ -1,4 +1,5 @@
 class Dish {
+  final String dishID;
   final String foodName;
   final String cookName;
   final String foodImage;
@@ -9,6 +10,7 @@ class Dish {
   int quantity;
 
   Dish({
+    required this.dishID,
     required this.foodName,
     required this.cookName,
     required this.foodImage,

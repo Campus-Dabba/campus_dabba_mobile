@@ -1,12 +1,14 @@
 import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
+import 'package:campus_dabba/type/order.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final _orderBasket = OrderBasket();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Icon(Icons.search, color: Colors.grey),
                       SizedBox(width: 8),
-                      Text('Search...', style: TextStyle(color: Colors.grey)),
+                      Text('Search', style: TextStyle(color: Colors.grey)),
                     ],
                   ),
                 ),
@@ -82,7 +84,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             FoodCard(
+              orderBasket: _orderBasket,
               dish: Dish(
+                dishID: "anita-bharlivangi",
                 cookName: "Anita",
                 cookImage: "assets/cooks/cook_01.png",
                 foodImage: "assets/bharli vangi.png",
@@ -92,6 +96,35 @@ class HomeScreen extends StatelessWidget {
                 estimatedTime: "20-25 min",
               ),
             ),
+            FoodCard(
+              orderBasket: _orderBasket,
+              dish: Dish(
+                dishID: "swati-fafdajalebi",
+                cookName: "Swati",
+                cookImage: "assets/cooks/cook_02.png",
+                foodImage: "assets/fafda jalebi.png",
+                foodName: "Fafda Jalebi",
+                price: "80",
+                rating: 4.2,
+                estimatedTime: "45-50 min",
+              ),
+            ),
+            FoodCard(
+              orderBasket: _orderBasket,
+              dish: Dish(
+                dishID: "rupa-thepla",
+                cookName: "Rupa",
+                cookImage: "assets/cooks/cook_02.png",
+                foodImage: "assets/thepla.png",
+                foodName: "Thepla",
+                price: "119",
+                rating: 3.8,
+                estimatedTime: "50-60 min",
+              ),
+            ),
+            SizedBox(height: 100),
+            Center(child: Text("looking for something else?")),
+            SizedBox(height: 20),
           ],
         ),
       ),
