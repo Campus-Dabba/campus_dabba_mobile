@@ -1,5 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:campus_dabba/screen/auth_screen.dart';
 // import 'package:campus_dabba/auth_screen.dart';
 // import 'package:campus_dabba/screen/dabba_signin_signup_screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
