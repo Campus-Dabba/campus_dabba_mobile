@@ -5,7 +5,7 @@ import 'package:simple_animations/animation_builder/play_animation_builder.dart'
 import 'package:simple_animations/movie_tween/movie_tween.dart';
 
 class AppAssets {
-  static String kAppLogo = 'assets/dabba/logo.png';
+  static String kAppLogo = 'assets/dabba/dabba_logo.png';
   static String kGoogle = 'assets/dabba/icons-google.png';
   static String kFacebook = 'assets/dabba/icons-facebook.png';
   static String kTwitter = 'assets/dabba/icons-twitter.png';
@@ -77,7 +77,12 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 80),
-                Center(child: Image.asset(AppAssets.kAppLogo)),
+                Center(
+                  child: Image.asset(
+                    AppAssets.kAppLogo,
+                    height: 150,
+                  ),
+                ),
                 const SizedBox(height: 30),
                 const Text('Sign Up',
                     style: TextStyle(
@@ -221,7 +226,12 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 80),
-                Center(child: Image.asset(AppAssets.kAppLogo)),
+                Center(
+                  child: Image.asset(
+                    AppAssets.kAppLogo,
+                    height: 150,
+                  ),
+                ),
                 const SizedBox(height: 30),
                 const Text('Sign In',
                     style: TextStyle(
