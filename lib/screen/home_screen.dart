@@ -86,6 +86,7 @@ class HomeScreen extends StatelessWidget {
               cookImageUrl: "assets/cooks/cook_01.png",
               foodImageUrl: "assets/bharli vangi.png",
               foodName: "Bharli Vangi",
+              price: "190",
               rating: 4.8,
               estimatedTime: "20-25 min",
             ),
