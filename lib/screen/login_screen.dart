@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             // logo
             Icon(
-              Icons.chat,
+              Icons.fastfood_outlined,
               size: 60,
               color: Theme.of(context).colorScheme.primary,
             ),

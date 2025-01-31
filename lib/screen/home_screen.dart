@@ -3,6 +3,7 @@ import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
+import 'package:campus_dabba/widgets/curved_bottom_nav_bar.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,10 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CartScreen(
-                          orderBasket: _orderBasket,
-                        )),
+                  builder: (context) => CartScreen(
+                    orderBasket: _orderBasket,
+                  ),
+                ),
               );
             },
           ),
@@ -131,6 +133,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: CustomNavBarCurved(),
     );
   }
 }
