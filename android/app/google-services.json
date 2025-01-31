@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "896917888681",
+    "project_id": "campus-dabba",
+    "storage_bucket": "campus-dabba.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896917888681:android:c40b0c4be142b5f75f13b8",
+        "android_client_info": {
+          "package_name": "com.campusdabba.daytech.campus_dabba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa3_Km_oX3xht79_TVoiVbyoJWZknepto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
