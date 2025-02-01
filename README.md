@@ -15,23 +15,25 @@ Campus Dabba is a Flutter-based food ordering app designed specifically for camp
 ### Home Screen
 ![Home Screen](src/ss_01.png)
 
-### Menu Screen
-![Menu Screen](src/ss_02.png)
-
 ### Order Tracking Screen
 ![Order Tracking](src/ss_04.png)
 
+### User Profile
+![Menu Screen](src/ss_03.png)
+
+### Settings
+![Menu Screen](src/ss_05.png)
 
 ## Installation
 
 1. **Clone the repository:**  
    ```bash
-   git clone https://github.com/yourusername/campus-dabba.git
+   git clone https://github.com/Campus-Dabba/campus_dabba_mobile.git
    ```
 
 2. **Navigate to the project directory:**  
    ```bash
-   cd campus-dabba
+   cd campus_dabba_mobile
    ```
 
 3. **Get Flutter dependencies:**  
@@ -48,15 +50,9 @@ Campus Dabba is a Flutter-based food ordering app designed specifically for camp
 
 - Flutter SDK
 - Dart SDK
-- Android Studio or Xcode for emulators
+- Android Studio or Xcode
+- Anroid/IOS emulators or devices with ADB
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
