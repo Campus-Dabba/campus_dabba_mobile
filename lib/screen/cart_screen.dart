@@ -15,9 +15,9 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   // This would typically come from a state management solution or a database
   List<CartItem> cartItems = [
-    CartItem(name: 'Margherita Pizza', price: 12.99, quantity: 1),
-    CartItem(name: 'Cheeseburger', price: 8.99, quantity: 2),
-    CartItem(name: 'Fries', price: 3.99, quantity: 1),
+    CartItem(name: 'Bharli Vangi', price: 190, quantity: 2),
+    CartItem(name: 'Fafda Jalebi', price: 80, quantity: 1),
+    CartItem(name: 'Thepla', price: 119, quantity: 1),
   ];
 
   double get totalPrice {

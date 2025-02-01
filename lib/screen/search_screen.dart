@@ -30,10 +30,6 @@ class BackgroundWaveClipper extends CustomClipper<Path> {
 
     const minSize = 140.0;
 
-    // when h = max = 280
-    // h = 280, p1 = 210, p1Diff = 70
-    // when h = min = 140
-    // h = 140, p1 = 140, p1Diff = 0
     final p1Diff = ((minSize - size.height) * 0.5).truncate().abs();
     path.lineTo(0.0, size.height - p1Diff);
 
@@ -95,6 +91,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFF5E0),
       body: CustomScrollView(
         slivers: [
           const SliverPersistentHeader(

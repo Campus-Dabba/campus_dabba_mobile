@@ -6,6 +6,7 @@ import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
 import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
+import 'package:campus_dabba/widgets/custom_app_drawer.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,8 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Map<String, dynamic> basket = {};
 
   void logoutFunction() {
-    final auth = AuthService();
-    auth.signOut();
+    AuthService().signOut();
   }
 
   @override
@@ -66,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFFF5E0),
+      drawer: CustomAppDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF5E0),
         title: Text("Campus Dabba"),
@@ -99,14 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                    // color: Colors.white,
+                    border: Border.all(color: Color(0xFF84BD93)),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.search, color: Colors.grey),
+                      Icon(Icons.search, color: Color(0xFF84BD93)),
                       SizedBox(width: 8),
-                      Text('Search', style: TextStyle(color: Colors.grey)),
+                      Text('Search', style: TextStyle(color: Color(0xFF84BD93))),
                     ],
                   ),
                 ),
