@@ -21,7 +21,6 @@ Campus Dabba is a Flutter-based food ordering app designed specifically for camp
 ### Order Tracking Screen
 ![Order Tracking](src/ss_04.png)
 
-*Replace the image paths (`screenshots/home_screen.png`, etc.) with actual paths to your screenshots.*
 
 ## Installation
 
