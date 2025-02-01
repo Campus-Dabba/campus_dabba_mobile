@@ -61,7 +61,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            ...orderItems.map((item) => _buildOrderItem(item)).toList(),
+            ...orderItems.map((item) => _buildOrderItem(item)),
           ],
         ),
       ),

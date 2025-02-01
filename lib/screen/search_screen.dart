@@ -105,11 +105,3 @@ class _SearchFoodScreenState extends State<SearchFoodScreen> {
   }
 }
 
-// Main function to run the app
-void main() {
-  runApp(const MaterialApp(
-    home: SearchFoodScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
-

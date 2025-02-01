@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             _buildInfoRow('Phone', '+91 123 456 7890'),
-            _buildInfoRow('Address', '123 Main St, Dharwad, Karnataka'),
+            _buildInfoRow('Address', 'Ittigari Road, Dharwad, Karnataka'),
             _buildInfoRow('Member Since', 'January 2023'),
           ],
         ),

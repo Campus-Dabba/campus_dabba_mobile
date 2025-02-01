@@ -83,8 +83,7 @@ class _DishDetailsScreenState extends State<DishDetailsScreen> {
                   SizedBox(height: 8),
                   Text(
                     // TODO: Dish discription
-                    // widget.dish.description,
-                    "haha a discription",
+                    "A sizzling plate of tender, juicy steak, seared to perfection with a rich, smoky char. It's topped with a dollop of herb butter, melting into the savory juices, and served alongside crisp, golden fries and a fresh, tangy arugula salad. A hearty, mouthwatering delight in every bite.",
 
                     style: TextStyle(fontSize: 16),
                   ),

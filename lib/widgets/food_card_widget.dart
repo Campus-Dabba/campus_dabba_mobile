@@ -2,9 +2,9 @@ import 'package:campus_dabba/screen/cook_profile.dart';
 import 'package:campus_dabba/screen/dish_details_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
+import 'package:campus_dabba/widgets/cutom_primary_button.dart';
 import 'package:campus_dabba/widgets/quantity_controll_widget.dart';
 import 'package:flutter/material.dart';
-
 
 class FoodCard extends StatefulWidget {
   final Dish dish;
@@ -148,36 +148,13 @@ class _FoodCardState extends State<FoodCard> {
             ),
           ),
           // Add dabba button
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // TODO: Add to cart functionality here
-                },
-                style: ElevatedButton.styleFrom(
-                  // primary: Colors.orange,
-                  foregroundColor: Color(0xFF3F2D20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                ),
-                child: Text(
-                  'Add dabba',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF3F2D20),
-                  ),
-                ),
-              ),
-            ),
+          CustomPrimaryButton(
+            onTap: () {},
+            color: Color(0xFF84BD93),
+            text: "Add Dabba",
           ),
         ],
       ),
     );
   }
 }
-
