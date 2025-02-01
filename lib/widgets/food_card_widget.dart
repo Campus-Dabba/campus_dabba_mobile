@@ -1,3 +1,4 @@
+import 'package:campus_dabba/screen/cook_profile.dart';
 import 'package:campus_dabba/screen/dish_details_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
@@ -27,6 +28,13 @@ class _FoodCardState extends State<FoodCard> {
     widget.onQuantityChange(widget.dish.dishID, quantity);
   }
 
+  void redirectToCookProfilePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CookProfileScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -39,18 +47,21 @@ class _FoodCardState extends State<FoodCard> {
           // Cook info
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage(widget.dish.cookImage),
-                  radius: 20,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  widget.dish.cookName,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+            child: GestureDetector(
+              onTap: () => redirectToCookProfilePage,
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(widget.dish.cookImage),
+                    radius: 20,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    widget.dish.cookName,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
           // Food image

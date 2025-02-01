@@ -1,3 +1,4 @@
+import 'package:campus_dabba/screen/checkout_screen.dart';
 import 'package:campus_dabba/type/order.dart';
 import 'package:flutter/material.dart';
 
@@ -97,9 +98,13 @@ class _CartScreenState extends State<CartScreen> {
                         TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    // TODO: Implement checkout functionality
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Proceeding to checkout...')),
+                    // // TODO: Implement checkout functionality
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   SnackBar(content: Text('Proceeding to checkout...')),
+                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CheckoutScreen()),
                     );
                   },
                   child: Text('Proceed to Checkout'),

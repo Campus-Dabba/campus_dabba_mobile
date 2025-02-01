@@ -23,10 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Map<String, dynamic> basket = {};
 
-  void logoutFunction() {
-    AuthService().signOut();
-  }
-
   @override
   void initState() {
     initialBasket();
@@ -84,10 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
-          IconButton(
-            onPressed: logoutFunction,
-            icon: Icon(Icons.logout),
-          )
         ],
       ),
       body: SingleChildScrollView(
@@ -108,7 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Icon(Icons.search, color: Color(0xFF84BD93)),
                       SizedBox(width: 8),
-                      Text('Search', style: TextStyle(color: Color(0xFF84BD93))),
+                      Text('Search',
+                          style: TextStyle(color: Color(0xFF84BD93))),
                     ],
                   ),
                 ),

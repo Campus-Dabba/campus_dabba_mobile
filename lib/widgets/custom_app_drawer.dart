@@ -1,3 +1,4 @@
+import 'package:campus_dabba/screen/profile_screen.dart';
 import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class CustomAppDrawer extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: Text(
-                'Food Delivery',
+                'Campus Dabba',
                 style: TextStyle(
                   color: Color(0xFF3F2D20),
                   fontSize: 24,
@@ -33,8 +34,10 @@ class CustomAppDrawer extends StatelessWidget {
                   leading: Icon(Icons.person),
                   title: Text('Profile'),
                   onTap: () {
-                    Navigator.pop(context);
-                    // Add navigation logic here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );
                   },
                 ),
                 ListTile(
