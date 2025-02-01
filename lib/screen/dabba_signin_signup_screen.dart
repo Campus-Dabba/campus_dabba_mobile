@@ -134,10 +134,11 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
                       return 'Please enter your email';
                     } else if (value.length < 6) {
                       return 'Password should be at least 6 characters';
-                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
-                        .hasMatch(value)) {
-                      return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
                     }
+                    // } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
+                    //     .hasMatch(value)) {
+                    //   return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
+                    // }
                     return null;
                   },
                 ),
@@ -241,18 +242,24 @@ class _DabbaSignInScreenState extends State<DabbaSignInScreen> {
                       return 'Please enter your password';
                     } else if (value.length < 6) {
                       return 'Password should be at least 6 characters';
-                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
-                        .hasMatch(value)) {
-                      return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
                     }
+                    // } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
+                    //     .hasMatch(value)) {
+                    //   return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
+                    // }
                     return null;
                   },
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton(
                     onTap: () async {
-                      if (_formKey.currentState!.validate()) {}
-                    },
+                    if (_formKey.currentState!.validate()) {
+                      await AuthService().signInWithEmailPassword(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
+                    }
+                  },
                     text: 'Sign In'),
                 const SizedBox(height: 60),
                 Row(
@@ -289,7 +296,6 @@ class _DabbaSignInScreenState extends State<DabbaSignInScreen> {
     }
   }
 }
-
 
 class AuthField extends StatefulWidget {
   final TextEditingController controller;
