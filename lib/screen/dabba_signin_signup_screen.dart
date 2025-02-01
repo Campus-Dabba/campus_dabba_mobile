@@ -84,7 +84,7 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text('Sign Up',
+                const Text('Register now',
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -259,6 +259,7 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                 AuthField(
                   hintText: 'Your Password',
                   controller: _passwordController,
+                  // isForgetButton: true,
                   keyboardType: TextInputType.visiblePassword,
                   isPasswordField: true,
                   validator: (value) {
@@ -477,13 +478,13 @@ class _PrimaryButtonState extends State<PrimaryButton>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      //   _controller.forward().then((_) {
-      //     _controller.reverse();
-      //   });
-      //   widget.onTap();
-      // },
-      onTap: widget.onTap,
+      onTap: () {
+        _controller.forward().then((_) {
+          _controller.reverse();
+        });
+        widget.onTap();
+      },
+      // onTap: widget.onTap,
       child: ScaleTransition(
         scale: _tween.animate(
           CurvedAnimation(
