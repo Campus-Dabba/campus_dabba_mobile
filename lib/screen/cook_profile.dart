@@ -93,12 +93,12 @@ class CookProfileScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'About Chef Maria',
+          'About Chef Anita',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 8),
         Text(
-          'Chef Maria has been passionate about Italian cuisine for over 20 years. '
+          'Chef Anita has been passionate about Italian cuisine for over 20 years. '
           'She learned the art of pasta making from her grandmother in Naples and '
           'has since perfected her craft in some of the finest restaurants in Rome and Florence. '
           'Now, she brings her authentic Italian flavors right to your doorstep.',
