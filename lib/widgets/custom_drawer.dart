@@ -1,4 +1,5 @@
 import 'package:campus_dabba/screen/browse_cook_screen.dart';
+import 'package:campus_dabba/screen/my_orders_screen.dart';
 import 'package:campus_dabba/screen/profile_screen.dart';
 import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -55,8 +56,10 @@ class CustomAppDrawer extends StatelessWidget {
                   leading: Icon(Icons.receipt),
                   title: Text('My Orders'),
                   onTap: () {
-                    Navigator.pop(context);
-                    // Add navigation logic here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyOrdersScreen()),
+                    );
                   },
                 ),
                 ListTile(
