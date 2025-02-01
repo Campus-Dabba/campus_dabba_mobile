@@ -7,11 +7,15 @@ import 'package:flutter/material.dart';
 class FoodCard extends StatefulWidget {
   final Dish dish;
   final OrderBasket orderBasket;
+  final int initialQuantity;
+  final void Function(String, int) onQuantityChange;
 
   const FoodCard({
     super.key,
     required this.dish,
     required this.orderBasket,
+    required this.initialQuantity,
+    required this.onQuantityChange,
   });
 
   @override
@@ -20,17 +24,13 @@ class FoodCard extends StatefulWidget {
 
 class _FoodCardState extends State<FoodCard> {
   void quantityChangeAction(quantity) {
-    widget.orderBasket.addOrder(
-      DishOrder(
-        orderID: widget.dish.dishID,
-        quantity: widget.dish.quantity,
-      ),
-    );
+    widget.onQuantityChange(widget.dish.dishID, quantity);
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color(0xFFE6DCCD),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Column(
@@ -130,10 +130,9 @@ class _FoodCardState extends State<FoodCard> {
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: QuantityControlWidget(
-                    initialQuantity: widget.dish.quantity,
-                    onQuantityChanged: (quantity) {
-                      widget.dish.quantity = quantity;
-                    },
+                    initialQuantity: widget.initialQuantity,
+                    onQuantityChanged: (quantity) =>
+                        quantityChangeAction(quantity),
                   ),
                 )
               ],

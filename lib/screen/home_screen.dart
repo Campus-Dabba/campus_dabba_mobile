@@ -10,13 +10,39 @@ import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final _orderBasket = OrderBasket();
+
+  Map<String, dynamic> basket = {};
 
   void logoutFunction() {
     final auth = AuthService();
     auth.signOut();
+  }
+
+  @override
+  void initState() {
+    initialBasket();
+    super.initState();
+  }
+
+  void initialBasket() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? encodedCartData = prefs.getString('cart');
+
+    basket = {};
+
+    if (encodedCartData != null) {
+      basket = json.decode(encodedCartData);
+    }
+    setState(() {});
   }
 
   void updateCartData(String dishID, int quantity) async {
@@ -39,7 +65,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFF5E0),
       appBar: AppBar(
+        backgroundColor: Color(0xFFFFF5E0),
         title: Text("Campus Dabba"),
         actions: [
           IconButton(
@@ -120,6 +148,8 @@ class HomeScreen extends StatelessWidget {
             ),
             FoodCard(
               orderBasket: _orderBasket,
+              onQuantityChange: updateCartData,
+              initialQuantity: basket["anita-bharlivangi"] ?? 0,
               dish: Dish(
                 dishID: "anita-bharlivangi",
                 cookName: "Anita",
@@ -133,6 +163,8 @@ class HomeScreen extends StatelessWidget {
             ),
             FoodCard(
               orderBasket: _orderBasket,
+              onQuantityChange: updateCartData,
+              initialQuantity: basket["swati-fafdajalebi"] ?? 0,
               dish: Dish(
                 dishID: "swati-fafdajalebi",
                 cookName: "Swati",
@@ -146,6 +178,8 @@ class HomeScreen extends StatelessWidget {
             ),
             FoodCard(
               orderBasket: _orderBasket,
+              initialQuantity: basket["rupa-thepla"] ?? 0,
+              onQuantityChange: updateCartData,
               dish: Dish(
                 dishID: "rupa-thepla",
                 cookName: "Rupa",

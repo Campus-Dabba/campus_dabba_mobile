@@ -28,7 +28,9 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFF5E0),
       appBar: AppBar(
+        backgroundColor: Color(0xFFFFF5E0),
         title: Text('Your Cart'),
       ),
       body: Column(
@@ -70,17 +72,26 @@ class _CartScreenState extends State<CartScreen> {
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      '\$${totalPrice.toStringAsFixed(2)}',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.currency_rupee,
+                          size: 18,
+                        ),
+                        Text(
+                          totalPrice.toStringAsFixed(2),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.orange,
+                    foregroundColor: Color(0xFF3F2D20),
+                    backgroundColor: Color(0xFF84BD93),
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                     textStyle:
                         TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -125,6 +136,7 @@ class CartItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color(0xFFE6DCCD),
       margin: EdgeInsets.all(8),
       child: Padding(
         padding: EdgeInsets.all(16),
@@ -139,7 +151,15 @@ class CartItemWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 4),
-                  Text('\$${item.price.toStringAsFixed(2)}'),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.currency_rupee,
+                        size: 12,
+                      ),
+                      Text(item.price.toStringAsFixed(2)),
+                    ],
+                  ),
                 ],
               ),
             ),
