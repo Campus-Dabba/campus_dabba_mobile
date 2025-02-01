@@ -1,153 +1,114 @@
 import 'package:flutter/material.dart';
 
-class BackgroundWave extends StatelessWidget {
-  final double height;
+// Food model
+class Food {
+  final String name;
+  final String category;
+  final double price;
 
-  const BackgroundWave({super.key, required this.height});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      child: ClipPath(
-          clipper: BackgroundWaveClipper(),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: height,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-              colors: [Color(0xFFFACCCC), Color(0xFFF6EFE9)],
-            )),
-          )),
-    );
-  }
+  Food({required this.name, required this.category, required this.price});
 }
 
-class BackgroundWaveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
+// Sample food data
+final List<Food> allFoods = [
+  Food(name: 'Pizza', category: 'Italian', price: 12.99),
+  Food(name: 'Burger', category: 'American', price: 8.99),
+  Food(name: 'Sushi', category: 'Japanese', price: 15.99),
+  Food(name: 'Pasta', category: 'Italian', price: 10.99),
+  Food(name: 'Salad', category: 'Healthy', price: 7.99),
+  Food(name: 'Taco', category: 'Mexican', price: 6.99),
+  Food(name: 'Curry', category: 'Indian', price: 11.99),
+  Food(name: 'Steak', category: 'American', price: 19.99),
+];
 
-    const minSize = 140.0;
-
-    final p1Diff = ((minSize - size.height) * 0.5).truncate().abs();
-    path.lineTo(0.0, size.height - p1Diff);
-
-    final controlPoint = Offset(size.width * 0.4, size.height);
-    final endPoint = Offset(size.width, minSize);
-
-    path.quadraticBezierTo(
-        controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
-
-    path.lineTo(size.width, 0.0);
-    path.close();
-
-    return path;
-  }
+class SearchFoodScreen extends StatefulWidget {
+  const SearchFoodScreen({super.key});
 
   @override
-  bool shouldReclip(BackgroundWaveClipper oldClipper) => oldClipper != this;
+  State<SearchFoodScreen> createState() => _SearchFoodScreenState();
 }
 
-class SearchBar extends StatelessWidget {
-  final pink = const Color(0xFFFACCCC);
-  final grey = const Color(0xFFF2F2F7);
+class _SearchFoodScreenState extends State<SearchFoodScreen> {
+  List<Food> displayedFoods = allFoods;
+  final TextEditingController _searchController = TextEditingController();
 
-  const SearchBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 32,
-      child: TextFormField(
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          focusColor: pink,
-          focusedBorder: _border(pink),
-          border: _border(grey),
-          enabledBorder: _border(grey),
-          hintText: 'Lets Eat!',
-          contentPadding: const EdgeInsets.symmetric(vertical: 20),
-          prefixIcon: const Icon(
-            Icons.search,
-            color: Colors.grey,
-          ),
-        ),
-        onFieldSubmitted: (value) {},
-      ),
-    );
+  void _filterFoods(String query) {
+    setState(() {
+      displayedFoods = allFoods
+          .where((food) =>
+              food.name.toLowerCase().contains(query.toLowerCase()) ||
+              food.category.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
   }
-
-  OutlineInputBorder _border(Color color) => OutlineInputBorder(
-        borderSide: BorderSide(width: 0.5, color: color),
-        borderRadius: BorderRadius.circular(12),
-      );
-}
-
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFF5E0),
-      body: CustomScrollView(
-        slivers: [
-          const SliverPersistentHeader(
-            delegate: SliverSearchAppBar(),
-            pinned: true,
+      appBar: AppBar(
+        title: const Text('Search Food'),
+        backgroundColor: Colors.orange,
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search for food...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onChanged: _filterFoods,
+            ),
           ),
-          SliverList(
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Container(
-                margin: const EdgeInsets.all(8),
-                padding: const EdgeInsets.all(16),
-                child: const Text(
-                  'A really tasty indian cuisin',
-                  style: TextStyle(fontSize: 20),
-                ));
-          }, childCount: 20))
+          Expanded(
+            child: ListView.builder(
+              itemCount: displayedFoods.length,
+              itemBuilder: (context, index) {
+                final food = displayedFoods[index];
+                return Card(
+                  elevation: 2,
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: ListTile(
+                    title: Text(
+                      food.name,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(food.category),
+                    trailing: Text(
+                      '\$${food.price.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.orange.shade100,
+                      child: Text(
+                        food.name[0],
+                        style: TextStyle(color: Colors.orange.shade800),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
-  const SliverSearchAppBar();
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    var adjustedShrinkOffset =
-        shrinkOffset > minExtent ? minExtent : shrinkOffset;
-    double offset = (minExtent - adjustedShrinkOffset) * 0.5;
-    double topPadding = MediaQuery.of(context).padding.top + 16;
-
-    return Stack(
-      children: [
-        const BackgroundWave(
-          height: 280,
-        ),
-        Positioned(
-          top: topPadding + offset,
-          left: 16,
-          right: 16,
-          child: const SearchBar(),
-        )
-      ],
-    );
-  }
-
-  @override
-  double get maxExtent => 280;
-
-  @override
-  double get minExtent => 140;
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+// Main function to run the app
+void main() {
+  runApp(const MaterialApp(
+    home: SearchFoodScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
+

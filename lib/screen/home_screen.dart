@@ -1,15 +1,14 @@
-import 'dart:convert';
-
 import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
-import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
 import 'package:campus_dabba/widgets/custom_app_drawer.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -108,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                    MaterialPageRoute(builder: (context) => SearchFoodScreen()),
                   );
                 },
               ),

@@ -6,9 +6,10 @@ class CookProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFF5E0),
       appBar: AppBar(
         title: const Text('Cook Profile'),
-        backgroundColor: const Color(0xFF84BD93),
+        backgroundColor: const Color(0xFFFFF5E0),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -38,7 +39,7 @@ class CookProfileScreen extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 50,
-          backgroundImage: NetworkImage('https://example.com/chef_maria_profile.jpg'),
+          backgroundImage: AssetImage("assets/cooks/cook_01.png"),
         ),
         const SizedBox(width: 16),
         Expanded(
@@ -46,20 +47,20 @@ class CookProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Chef Maria',
+                'Anita',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               const Text(
                 'Italian Cuisine Expert',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyle(fontSize: 16, color: Color(0xFF3F2D20)),
               ),
               const SizedBox(height: 8),
               Row(
                 children: [
                   _buildInfoChip(Icons.star, '4.8'),
                   const SizedBox(width: 8),
-                  _buildInfoChip(Icons.restaurant, '50+ dishes'),
+                  _buildInfoChip(Icons.restaurant, '17+ dishes'),
                 ],
               ),
             ],
@@ -118,9 +119,25 @@ class CookProfileScreen extends StatelessWidget {
         const SizedBox(height: 16),
         Row(
           children: [
-            Expanded(child: _buildDayCard('Today', ['Spaghetti Carbonara', 'Tiramisu'])),
+            Expanded(
+              child: _buildDayCard(
+                'Today',
+                [
+                  'Spaghetti Carbonara',
+                  'Tiramisu',
+                ],
+              ),
+            ),
             const SizedBox(width: 16),
-            Expanded(child: _buildDayCard('Tomorrow', ['Margherita Pizza', 'Panna Cotta'])),
+            Expanded(
+              child: _buildDayCard(
+                'Tomorrow',
+                [
+                  'Margherita Pizza',
+                  'Panna Cotta',
+                ],
+              ),
+            ),
           ],
         ),
       ],
@@ -129,6 +146,7 @@ class CookProfileScreen extends StatelessWidget {
 
   Widget _buildDayCard(String day, List<String> dishes) {
     return Card(
+      color: Color(0xFFE6DCCD),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -150,7 +168,15 @@ class CookProfileScreen extends StatelessWidget {
   }
 
   Widget _buildWeeklyDishSchedule() {
-    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    final days = [
+      'Monday',
+      'Tueday',
+      'Wedday',
+      'Thuday',
+      'Friday',
+      'Satday',
+      'Sunday'
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -166,6 +192,7 @@ class CookProfileScreen extends StatelessWidget {
             itemCount: days.length,
             itemBuilder: (context, index) {
               return Card(
+                color: Color(0xFFE6DCCD),
                 child: Container(
                   width: 100,
                   padding: const EdgeInsets.all(8),
@@ -192,9 +219,9 @@ class CookProfileScreen extends StatelessWidget {
 
   Widget _buildPopularDishes() {
     final dishes = [
-      {'name': 'Spaghetti Carbonara', 'price': 14.99, 'image': 'https://example.com/carbonara.jpg'},
-      {'name': 'Margherita Pizza', 'price': 12.99, 'image': 'https://example.com/margherita.jpg'},
-      {'name': 'Risotto ai Funghi', 'price': 16.99, 'image': 'https://example.com/risotto.jpg'},
+      {'name': 'Thepla', 'price': 90, 'image': 'assets/thepla.png'},
+      {'name': 'Undhiyo', 'price': 120, 'image': 'assets/undhiyo.png'},
+      {'name': 'Puran Poli', 'price': 70, 'image': 'assets/puran_poli.png'},
     ];
 
     return Column(
@@ -212,18 +239,25 @@ class CookProfileScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final dish = dishes[index];
             return Card(
+              color: Color(0xFFE6DCCD),
               child: ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
+                  // child: Image.network(
+                  //   dish['image'] as String,
+                  //   width: 60,
+                  //   height: 60,
+                  //   fit: BoxFit.cover,
+                  // ),
+                  child: Image.asset(
                     dish['image'] as String,
                     width: 60,
-                    height: 60,
+                    height: 40,
                     fit: BoxFit.cover,
                   ),
                 ),
                 title: Text(dish['name'] as String),
-                subtitle: Text('\$${dish['price']}'),
+                subtitle: Text('₹${dish['price']}'),
                 trailing: IconButton(
                   icon: const Icon(Icons.add_circle_outline),
                   color: const Color(0xFF84BD93),
@@ -239,4 +273,3 @@ class CookProfileScreen extends StatelessWidget {
     );
   }
 }
-
