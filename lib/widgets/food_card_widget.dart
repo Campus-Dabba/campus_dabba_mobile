@@ -48,7 +48,7 @@ class _FoodCardState extends State<FoodCard> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () => redirectToCookProfilePage,
+              onTap: redirectToCookProfilePage,
               child: Row(
                 children: [
                   CircleAvatar(

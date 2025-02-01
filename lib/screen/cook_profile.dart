@@ -1,53 +1,40 @@
 import 'package:flutter/material.dart';
 
 class CookProfileScreen extends StatelessWidget {
-  const CookProfileScreen({Key? key}) : super(key: key);
+  const CookProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _buildSliverAppBar(),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildCookInfo(),
-                  const SizedBox(height: 24),
-                  _buildCookBio(),
-                  const SizedBox(height: 24),
-                  _buildSpecialties(),
-                  const SizedBox(height: 24),
-                  _buildDishList(),
-                ],
-              ),
-            ),
-          ),
-        ],
+      appBar: AppBar(
+        title: const Text('Cook Profile'),
+        backgroundColor: const Color(0xFF84BD93),
       ),
-    );
-  }
-
-  Widget _buildSliverAppBar() {
-    return SliverAppBar(
-      expandedHeight: 200.0,
-      floating: false,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        title: const Text('Chef Maria'),
-        background: Image.network(
-          'https://example.com/chef_maria_background.jpg',
-          fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildProfileHeader(),
+              const SizedBox(height: 24),
+              _buildAboutSection(),
+              const SizedBox(height: 24),
+              _buildWhatImMakingSection(),
+              const SizedBox(height: 24),
+              _buildWeeklyDishSchedule(),
+              const SizedBox(height: 24),
+              _buildPopularDishes(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildCookInfo() {
+  Widget _buildProfileHeader() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
           radius: 50,
@@ -71,8 +58,6 @@ class CookProfileScreen extends StatelessWidget {
               Row(
                 children: [
                   _buildInfoChip(Icons.star, '4.8'),
-                  const SizedBox(width: 8),
-                  _buildInfoChip(Icons.access_time, '30 min'),
                   const SizedBox(width: 8),
                   _buildInfoChip(Icons.restaurant, '50+ dishes'),
                 ],
@@ -102,7 +87,7 @@ class CookProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCookBio() {
+  Widget _buildAboutSection() {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -122,36 +107,94 @@ class CookProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSpecialties() {
-    final specialties = ['Pasta', 'Pizza', 'Risotto', 'Seafood'];
+  Widget _buildWhatImMakingSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Specialties',
+          "What I'm Making",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
-        Wrap(
-          spacing: 8,
-          children: specialties
-              .map((specialty) => Chip(
-                    label: Text(specialty),
-                    backgroundColor: const Color(0xFF84BD93),
-                    labelStyle: const TextStyle(color: Colors.white),
-                  ))
-              .toList(),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(child: _buildDayCard('Today', ['Spaghetti Carbonara', 'Tiramisu'])),
+            const SizedBox(width: 16),
+            Expanded(child: _buildDayCard('Tomorrow', ['Margherita Pizza', 'Panna Cotta'])),
+          ],
         ),
       ],
     );
   }
 
-  Widget _buildDishList() {
+  Widget _buildDayCard(String day, List<String> dishes) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              day,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            ...dishes.map((dish) => Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Text(dish),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWeeklyDishSchedule() {
+    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Weekly Dish Schedule',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 100,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: days.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: Container(
+                  width: 100,
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        days[index],
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      const Text('Pasta'),
+                      const Text('Salad'),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopularDishes() {
     final dishes = [
       {'name': 'Spaghetti Carbonara', 'price': 14.99, 'image': 'https://example.com/carbonara.jpg'},
       {'name': 'Margherita Pizza', 'price': 12.99, 'image': 'https://example.com/margherita.jpg'},
       {'name': 'Risotto ai Funghi', 'price': 16.99, 'image': 'https://example.com/risotto.jpg'},
-      {'name': 'Osso Buco', 'price': 22.99, 'image': 'https://example.com/ossobuco.jpg'},
     ];
 
     return Column(
