@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:campus_dabba/screen/cart_screen.dart';
 import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
@@ -6,6 +8,7 @@ import 'package:campus_dabba/utils/auth_service.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -16,6 +19,23 @@ class HomeScreen extends StatelessWidget {
     auth.signOut();
   }
 
+  void updateCartData(String dishID, int quantity) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? encodedCartData = prefs.getString('cart');
+
+    Map<String, dynamic> cartData = {};
+
+    if (encodedCartData != null) {
+      cartData = json.decode(encodedCartData);
+    }
+
+    if ((quantity == 0) & cartData.containsKey(dishID)) {
+      cartData.remove(dishID);
+    } else {
+      cartData[dishID] = quantity;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +43,7 @@ class HomeScreen extends StatelessWidget {
         title: Text("Campus Dabba"),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart_outlined),
             onPressed: () {
               Navigator.push(
                 context,
@@ -87,6 +107,7 @@ class HomeScreen extends StatelessWidget {
                   CategoryButton(title: 'Gujrati', icon: Icons.fastfood),
                   CategoryButton(title: 'Bengoli', icon: Icons.rice_bowl),
                   CategoryButton(title: 'Maharastran', icon: Icons.cake),
+                  CategoryButton(title: 'Assam', icon: Icons.icecream),
                 ],
               ),
             ),

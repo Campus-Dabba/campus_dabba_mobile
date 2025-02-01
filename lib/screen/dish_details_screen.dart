@@ -1,5 +1,4 @@
 import 'package:campus_dabba/type/dish.dart';
-import 'package:campus_dabba/widgets/quantity_controll_widget.dart';
 import 'package:flutter/material.dart';
 
 class DishDetailsScreen extends StatefulWidget {
@@ -90,21 +89,16 @@ class _DishDetailsScreenState extends State<DishDetailsScreen> {
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 24),
-                  // Text(
-                  //   'Quantity',
-                  //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  // Center(
+                  //   child: QuantityControlWidget(
+                  //     initialQuantity: widget.dish.quantity,
+                  //     onQuantityChanged: (quantity) {
+                  //       setState(() {
+                  //         widget.dish.quantity = quantity;
+                  //       });
+                  //     },
+                  //   ),
                   // ),
-                  // SizedBox(height: 8),
-                  Center(
-                    child: QuantityControlWidget(
-                      initialQuantity: widget.dish.quantity,
-                      onQuantityChanged: (quantity) {
-                        setState(() {
-                          widget.dish.quantity = quantity;
-                        });
-                      },
-                    ),
-                  ),
                   SizedBox(height: 24),
                   // ElevatedButton(
                   //   onPressed: () {
