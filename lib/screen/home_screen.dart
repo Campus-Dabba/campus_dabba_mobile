@@ -92,15 +92,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     // color: Colors.white,
-                    border: Border.all(color: Color(0xFF84BD93)),
+                    border: Border.all(color: Color(0xFF3F2D20)),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.search, color: Color(0xFF84BD93)),
+                      Icon(Icons.search, color: Color(0xFF3F2D20)),
                       SizedBox(width: 8),
                       Text('Search',
-                          style: TextStyle(color: Color(0xFF84BD93))),
+                          style: TextStyle(color: Color(0xFF3F2D20))),
                     ],
                   ),
                 ),

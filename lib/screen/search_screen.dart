@@ -11,14 +11,14 @@ class Food {
 
 // Sample food data
 final List<Food> allFoods = [
-  Food(name: 'Pizza', category: 'Italian', price: 12.99),
-  Food(name: 'Burger', category: 'American', price: 8.99),
-  Food(name: 'Sushi', category: 'Japanese', price: 15.99),
-  Food(name: 'Pasta', category: 'Italian', price: 10.99),
-  Food(name: 'Salad', category: 'Healthy', price: 7.99),
-  Food(name: 'Taco', category: 'Mexican', price: 6.99),
-  Food(name: 'Curry', category: 'Indian', price: 11.99),
-  Food(name: 'Steak', category: 'American', price: 19.99),
+  Food(name: 'Bharli Vangi', category: 'Marathi', price: 79),
+  Food(name: 'Fafda Jalebi', category: 'Marathi', price: 50),
+  Food(name: 'Khandvi', category: 'Gujrati', price: 110),
+  Food(name: 'Missal Pav', category: 'Maharastran', price: 120),
+  Food(name: 'Puran Poli', category: 'Gujrati', price: 70),
+  Food(name: 'Thepla', category: 'Gujrati', price: 50),
+  Food(name: 'Egg Curry', category: 'Bengoli', price: 40),
+  Food(name: 'undhiyo', category: 'South Indian', price: 80),
 ];
 
 class SearchFoodScreen extends StatefulWidget {
@@ -45,9 +45,10 @@ class _SearchFoodScreenState extends State<SearchFoodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE6DCCD),
       appBar: AppBar(
         title: const Text('Search Food'),
-        backgroundColor: Colors.orange,
+        backgroundColor: Color(0xFFE6DCCD),
       ),
       body: Column(
         children: [
