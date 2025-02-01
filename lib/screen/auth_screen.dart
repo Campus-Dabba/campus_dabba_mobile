@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     if (authScreenType == _AuthScreenType.loginScreen) {
-      return DabbaSigninScreen(
+      return DabbaSignInScreen(
         registerNowCallback: loginAndRegisterScreenSwitch,
       );
     } else {

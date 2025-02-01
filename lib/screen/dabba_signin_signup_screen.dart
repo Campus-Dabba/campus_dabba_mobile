@@ -171,54 +171,29 @@ class _DabbaSignUpScreenState extends State<DabbaSignUpScreen> {
   }
 }
 
-class DabbaSigninScreen extends StatefulWidget {
+class DabbaSignInScreen extends StatefulWidget {
   final VoidCallback registerNowCallback;
 
-  const DabbaSigninScreen({
+  const DabbaSignInScreen({
     super.key,
     required this.registerNowCallback,
   });
 
   @override
-  State<DabbaSigninScreen> createState() => _DabbaSigninScreenState();
+  State<DabbaSignInScreen> createState() => _DabbaSignInScreenState();
 }
 
-class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
+class _DabbaSignInScreenState extends State<DabbaSignInScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool isEmailCorrect = false;
-  bool isNameCorrect = false;
-
-  bool validateEmail(String value) {
-    if (value.isEmpty) {
-      return false;
-    } else {
-      return true;
-      // TODO: make a proper validation (currently broken)
-      //
-      // final emailRegex = RegExp(
-      //   r'^[w-]+(.[w-]+)*@([w-]+.)+[a-zA-Z]{2,7}$',
-      // );
-      // return emailRegex.hasMatch(value);
-    }
-  }
-
-  void signInFunction() {
-    final auth = AuthService();
-
-    auth.signInWithEmailPassword(
-      _emailController.text,
-      _passwordController.text,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kBackground,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Form(
           key: _formKey,
           child: FadeAnimation(
@@ -237,17 +212,17 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black)),
-                const SizedBox(height: 74),
+                        color: AppColors.kSecondary)),
+                const SizedBox(height: 77),
                 AuthField(
                   controller: _emailController,
-                  hintText: 'Your Email',
                   keyboardType: TextInputType.emailAddress,
                   isFieldValidated: isEmailCorrect,
                   onChanged: (value) {
                     setState(() {});
                     isEmailCorrect = validateEmail(value);
                   },
+                  hintText: 'Your Email',
                   validator: (value) {
                     if (!validateEmail(value!)) {
                       return 'Please enter a valid email address';
@@ -259,42 +234,35 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
                 AuthField(
                   hintText: 'Your Password',
                   controller: _passwordController,
-                  // isForgetButton: true,
                   keyboardType: TextInputType.visiblePassword,
-                  isPasswordField: true,
+                  isForgetButton: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Please enter your password';
                     } else if (value.length < 6) {
                       return 'Password should be at least 6 characters';
+                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
+                        .hasMatch(value)) {
+                      return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
                     }
-                    // } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*d).+$')
-                    //     .hasMatch(value)) {
-                    //   return 'Password should contain at least one uppercase letter, one lowercase letter, and one digit';
-                    // }
                     return null;
                   },
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton(
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      await AuthService().signInWithEmailPassword(
-                        _emailController.text,
-                        _passwordController.text,
-                      );
-                    }
-                  },
-                  text: 'Sign In',
-                ),
-                const SizedBox(height: 30),
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {}
+                    },
+                    text: 'Sign In'),
+                const SizedBox(height: 60),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?",
+                    const Text('New User?',
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.kPrimary,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.kSecondary,
                         )),
                     CustomTextButton(
                       onPressed: widget.registerNowCallback,
@@ -309,7 +277,19 @@ class _DabbaSigninScreenState extends State<DabbaSigninScreen> {
       ),
     );
   }
+
+  bool validateEmail(String value) {
+    if (value.isEmpty) {
+      return false;
+    } else {
+      final emailRegex = RegExp(
+        r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+      );
+      return emailRegex.hasMatch(value);
+    }
+  }
 }
+
 
 class AuthField extends StatefulWidget {
   final TextEditingController controller;
