@@ -3,7 +3,7 @@ import 'package:campus_dabba/screen/search_screen.dart';
 import 'package:campus_dabba/type/dish.dart';
 import 'package:campus_dabba/type/order.dart';
 import 'package:campus_dabba/widgets/category_button.dart';
-import 'package:campus_dabba/widgets/custom_app_drawer.dart';
+import 'package:campus_dabba/widgets/custom_drawer.dart';
 import 'package:campus_dabba/widgets/food_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
