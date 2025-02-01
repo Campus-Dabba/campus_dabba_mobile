@@ -1,16 +1,24 @@
-# Campus Dabba
+# 🚀 Campus Dabba – The Future of Home-Cooked Food Delivery  
+**Bridging Home Cooks and Students with a Dynamic AI-Powered Platform**  
 
-Are you away from home? Tired of eating at restaurants or missing homemade food? With **Campus Dabba**, you can enjoy homemade food made with a mother's love, even when you're away from home. Whether you're a student, a working professional, or anyone else in a campus environment, Campus Dabba has got you covered!
+## 🍲 What is Campus Dabba?  
+Campus Dabba is a **Next.js-powered** platform that connects students and professionals with **authentic, homemade meals** prepared by **local households**. Our focus is on:  
+✔️ **Supporting local families** by giving them a platform to share their culinary skills  
+✔️ **Limiting the number of customers per household** to ensure personalized, high-quality meals  
+✔️ **Providing healthy, home-cooked alternatives** to commercial food options  
 
-Campus Dabba is a Flutter-based food ordering app designed specifically for campus environments. It allows students, faculty, and staff to browse menus, place orders, and track deliveries seamlessly.
+With a **dynamic AI-driven system**, it seamlessly updates orders, schedules, payments, and cook availability in real time.  
 
-## Features
+---
 
-- **User-Friendly Interface:** Simple and intuitive design for quick navigation.
-- **Real-Time Order Tracking:** Know exactly when your food will arrive.
-- **Customizable Menus:** Explore diverse food options available on campus.
-- **Connect with Cooks:** Find cooks near you who are preparing meals today or this week.
-- **Order History:** Keep track of your past orders for easy reordering.
+## 🔥 Key Features  
+### 🏡 **For Customers**  
+- **Find nearby home cooks** dynamically  
+- **Explore verified cook profiles** (ratings, specialties, certifications, and past orders)  
+- **Order meals with real-time availability** (ensuring freshness & limited batch serving)  
+- **Track orders dynamically**  
+- **AI-powered chatbot** fetches order status, estimated delivery time, and cook availability  
+- **Seamless payments & wallet integration**  
 
 ## Screenshots
 
